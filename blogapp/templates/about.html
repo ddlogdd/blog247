@@ -1,0 +1,86 @@
+{% extends 'home.html' %}
+
+{% load static %}
+
+{% block content %}
+<main>
+<section>
+    <div class="container" data-aos="fade-up">
+      <div class="row">
+        <div class="col-lg-12 text-center mb-5">
+        <br><br>
+          <h1 class="page-title">About us</h1>
+        </div>
+      </div>
+
+      <div class="row mb-5">
+
+        <!--<div class="d-md-flex post-entry-2 half">-->
+        <!--  <a href="#" class="me-4 thumbnail">-->
+        <!--    <img src="{% static 'assets/img/otherlogo.png' %}" alt="" class="img-fluid">-->
+        <!--  </a>-->
+        <!--  <div class="ps-md-5 mt-4 mt-md-0">-->
+        <!--    <div class="post-meta mt-4">About us</div>-->
+        <!--    <h2 class="mb-4 display-4">Company History</h2>-->
+
+        <p><b>Experience:</b>
+          We have been in electrical and industrial engineering field for 20 years, and have been practicing fully for 10years now, though we are fully incorporated in the year 2019.
+
+          Our workers are well trained, equipped and well oriented engineers with many years of practice.</p>
+        <p><b>What we do:</b>
+          <li>Importation of goods</li> 
+          <li>We buy and sell goods</li> 
+          <li>We supplies and type of electrical, industrial, solar system, CCTV and other electronic equipment across any country.</li>
+          <li>We also fully engaged in installation of every electrical, industrial, solar, CCTV and other electronic equipment.</p></li>
+         
+        <!--  </div>-->
+        <!--</div>-->
+
+        <div class="d-md-flex post-entry-2 half mt-5">
+          <a href="#" class="me-4 thumbnail order-2">
+            <img src="{% static 'assets/img/otherlogo.png' %}" alt="" class="img-fluid">
+          </a>
+          <div class="pe-md-5 mt-4 mt-md-0">
+            <div class="post-meta mt-4"> </div>
+            <h2 class="mb-4 display-4">Vision</h2>
+
+            <p>Vision:
+              Having the vision to assist and help as many they can reach across the continent of the world to improve, </p>
+            <p>automate, enhance and solve any issues related in Electrical, industrial,  solar, CCTV and electronic related components.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+</main><!-- End #main -->
+{% endblock %}
+{% block recent_posts %}
+          <div class="col-lg-4">
+            <h3 class="footer-heading"></h3>
+            {{ latest_posts }}
+            {% for category, post in latest_posts.items %}
+              {% if post %}
+                <ul class="footer-links footer-blog-entry list-unstyled">
+                  <li>
+                    <a href="{% url 'post_detail' category=category.slug slug=post.slug %}" class="d-flex align-items-center">
+                      {% if post.image %}
+                        <img src="{{ post.image.url }}" alt="" class="img-fluid me-3">
+                      {% endif %}
+                      <div>
+                        <div class="post-meta d-block"><span class="date">{{ category }}</span> <span class="mx-1">&bullet;</span> <span>{{ post.created |date:'M-d-Y ' }}</span></div>
+                        <span>{{ post.title }}</span>
+                      </div>
+                    </a>
+                  </li>
+                </ul>
+              {% endif %}
+            {% endfor %}
+{% endblock %}
+
+
+
+
+
+
